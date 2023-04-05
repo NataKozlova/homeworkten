@@ -1,12 +1,23 @@
 package ru.netology.services;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class RadioService {
 
+    @Getter
     private int numberWave;
+    private int countWaves;
+    @Getter
+    @Setter
     public int volume;
 
-    public int getNumberWave() {
-        return numberWave;
+    public RadioService(int countWaves) {
+        this.countWaves = countWaves;
+
+    }
+    public RadioService() {
+        countWaves = 10;
     }
 
     public void setNumberWave(int wave) {
@@ -21,7 +32,7 @@ public class RadioService {
 
     public void next() {
         numberWave++;
-        if (numberWave > 9) {
+        if (numberWave > countWaves - 1) {
             numberWave = 0;
         }
     }
@@ -29,16 +40,8 @@ public class RadioService {
     public void prev() {
         numberWave--;
         if (numberWave < 0) {
-            numberWave = 9;
+            numberWave = countWaves - 1;
         }
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int vol) {
-        volume = vol;
     }
 
     public void increaseVolume() {
