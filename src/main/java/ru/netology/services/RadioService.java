@@ -3,7 +3,16 @@ package ru.netology.services;
 public class RadioService {
 
     private int numberWave;
+    private int countWaves;
     public int volume;
+
+    public RadioService(int countWaves) {
+        this.countWaves = countWaves;
+
+    }
+    public RadioService() {
+        countWaves = 10;
+    }
 
     public int getNumberWave() {
         return numberWave;
@@ -21,7 +30,7 @@ public class RadioService {
 
     public void next() {
         numberWave++;
-        if (numberWave > 9) {
+        if (numberWave > countWaves - 1) {
             numberWave = 0;
         }
     }
@@ -29,7 +38,7 @@ public class RadioService {
     public void prev() {
         numberWave--;
         if (numberWave < 0) {
-            numberWave = 9;
+            numberWave = countWaves - 1;
         }
     }
 
